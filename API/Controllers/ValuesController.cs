@@ -10,6 +10,10 @@ namespace API.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
+        /// <summary>
+        /// Get All Values
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
