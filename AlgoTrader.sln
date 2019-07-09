@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebSite", "WebSite", "{F941
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{10E42E1D-BA6A-4220-9E1A-4CBCC62467DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reposiroty", "Reposiroty\Reposiroty.csproj", "{EFC0B259-2856-4345-BC2E-A251482F330D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{10E42E1D-BA6A-4220-9E1A-4CBCC62467DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10E42E1D-BA6A-4220-9E1A-4CBCC62467DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10E42E1D-BA6A-4220-9E1A-4CBCC62467DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFC0B259-2856-4345-BC2E-A251482F330D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFC0B259-2856-4345-BC2E-A251482F330D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFC0B259-2856-4345-BC2E-A251482F330D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFC0B259-2856-4345-BC2E-A251482F330D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

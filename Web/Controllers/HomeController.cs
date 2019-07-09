@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reposiroty;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,15 @@ namespace Web.Controllers
     {
         public ActionResult Index()
         {
+
+            using(AlgoDbContext db = new AlgoDbContext())
+            {
+
+            }
+
+
+
+
             return View();
         }
 
