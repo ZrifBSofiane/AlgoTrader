@@ -12,14 +12,7 @@ namespace Web.Controllers
         public ActionResult Index()
         {
 
-            using(AlgoDbContext db = new AlgoDbContext())
-            {
-
-            }
-
-
-
-
+        
             return View();
         }
 
