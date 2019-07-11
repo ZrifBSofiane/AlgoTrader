@@ -70,7 +70,6 @@ namespace Reposiroty
 
     }
 
-
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
@@ -109,9 +108,12 @@ namespace Reposiroty
             return manager;
         }
 
+        public IdentityManager IdentityManager
+        {
+            get { return new IdentityManager(); }
+        }
+
     }
-
-
 
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {

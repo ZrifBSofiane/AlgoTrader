@@ -1,7 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using SimpleInjector;
+using SimpleInjector.Integration.Web.Mvc;
+using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -16,6 +15,15 @@ namespace Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Code for registering our repo and DI
+            var container = new Container();
+
+
+            // This two extension method from integration package
+            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            DependencyResolver.SetResolver(
+                new SimpleInjectorDependencyResolver(container));
         }
     }
 }
