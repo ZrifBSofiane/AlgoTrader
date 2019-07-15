@@ -8,4 +8,4 @@ Install SQL Express, install local server, then install SSMS
 2- In SSMS, create a new Database with name AlgoTrader
 The connectionString is already in the code, so no need to change it  
 
-3- Build, lunch then enjoy
+3- Build, launch it then enjoy
