@@ -138,9 +138,12 @@ $(document).ready(function() {
         $('#mobile-collapse i').toggleClass('icon-toggle-left');
     });
 });
-$(document).ready(function() {
-    $(function() {
-        $('[data-toggle="tooltip"]').tooltip()
+$(document).ready(function () {
+    setTimeout(function () {
+        $('.theme-loader').remove();
+    },4000)
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
     })
     $('.theme-loader').fadeOut('slow', function() {
         $(this).remove();

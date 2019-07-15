@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="AlgoDbContext.cs" />
     <Compile Include="Config\ApplicationUser.cs" />
+    <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Migrations\201907092024009_Init.cs" />
     <Compile Include="Migrations\201907092024009_Init.Designer.cs">
       <DependentUpon>201907092024009_Init.cs</DependentUpon>

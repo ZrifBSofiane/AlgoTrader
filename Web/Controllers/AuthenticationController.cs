@@ -7,6 +7,8 @@ using System.Web;
 using System.Threading.Tasks;
 using Reposiroty.Models;
 using System;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Linq;
 
 namespace Web.Controllers
 {
@@ -44,6 +46,43 @@ namespace Web.Controllers
 
         public ActionResult Login()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Login(UserDto user, string returnUrl = null)
+        {
+            var _user = await UserManager.FindByEmailAsync(user.Email);
+            if (_user != null)
+            {
+                if (UserManager.CheckPasswordAsync(_user, user.Password).Result)
+                {
+                    if (UserManager.IsEmailConfirmedAsync(_user.Id).Result)
+                    {
+                        var resultRole = await UserManager.AddToRoleAsync(_user.Id, Enums.Role.SuperAdmin.ToString());
+                        await SignInManager.SignInAsync(_user, false, false);
+                        //_userService.UpdateLastConnection(_user.Id, false); TODO
+                        if (!string.IsNullOrWhiteSpace(returnUrl))
+                            return Redirect(returnUrl);
+                        else
+                            return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("ConfirmEmail");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Email or password incorrect. Please try again.");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "This email is not registred in our database.");
+                return View();
+            }
+
             return View();
         }
 
@@ -96,7 +135,7 @@ namespace Web.Controllers
                 }
                 SaveRole:
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(newUser.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = newUser.Id, code = code }, protocol: Request.Url.Scheme);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Authentication", new { userId = newUser.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(newUser.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\""
                     + callbackUrl + "\">link</a>");
                     return RedirectToAction("ConfirmEmail");
@@ -108,6 +147,18 @@ namespace Web.Controllers
                 {
                     ModelState.AddModelError("", error);
                 }
+            }
+            return View();
+        }
+
+        public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        {
+            ViewBag.IsRedirected = false;
+            if (string.IsNullOrWhiteSpace(userId))
+                ViewBag.IsRedirected = true;
+            else
+            {
+                await UserManager.ConfirmEmailAsync(userId, code);
             }
             return View();
         }

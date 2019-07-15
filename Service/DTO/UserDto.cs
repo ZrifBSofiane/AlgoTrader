@@ -8,7 +8,7 @@ namespace Service.DTO
 {
     public class UserDto
     {
-        public Guid UserId { get; set; }
+        public Guid Id { get; set; }
         public String Code { get; set; }
         public String Name { get; set; }
         public String Surname { get; set; }

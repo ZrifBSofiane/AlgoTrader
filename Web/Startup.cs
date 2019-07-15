@@ -25,8 +25,8 @@ namespace Web
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
-                LogoutPath = new PathString("/Account/Logout"),
+                LoginPath = new PathString("/Authentication/Login"),
+                LogoutPath = new PathString("/Authentication/Logout"),
             });
 
             //*******************************************

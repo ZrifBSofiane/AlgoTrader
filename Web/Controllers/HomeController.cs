@@ -1,4 +1,5 @@
 ﻿using Reposiroty;
+using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,16 @@ namespace Web.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+
+        private readonly IUserService _userService;
+
+        public HomeController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         public ActionResult Index()
         {
-
-        
             return View();
         }
 

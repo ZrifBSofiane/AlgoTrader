@@ -135,14 +135,14 @@ namespace Reposiroty
         public Task SendAsync(IdentityMessage message)
         {
             // Credentials:
-            var credentialUserName = "contact@sofiane-zrif-bouragba.com";
-            var sentFrom = "contact@sofiane-zrif-bouragba.com";
-            var pwd = "password"; //TODO : change credentials
+            var credentialUserName = "sofiane.zrif@gmail.com";
+            var sentFrom = "sofiane.zrif@gmail.com";
+            var pwd = ""; //TODO : change credentials
 
             // Configure the client:
-            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("mi3-wss6.a2hosting.com"); // TODO : Change Server
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com"); // TODO : Change Server
 
-            client.Port = 25;
+            client.Port = 465;
             client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
 

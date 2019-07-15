@@ -31,7 +31,8 @@ namespace Web
                        "~/Content/files/assets/js/vartical-layout.min.js",
                        "~/Content/files/assets/js/jquery.mCustomScrollbar.concat.min.js",
                        "~/Content/files/assets/pages/dashboard/crm-dashboard.min.js",
-                       "~/Content/files/assets/pages/js/script.js"));
+                       "~/Content/files/assets/pages/js/script.js",
+                       "~/Content/files/assets/js/script.js"));
 
 
 

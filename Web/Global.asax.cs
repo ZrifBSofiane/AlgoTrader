@@ -1,3 +1,5 @@
+using Service.Classes;
+using Service.Interfaces;
 using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 using System.Reflection;
@@ -18,6 +20,7 @@ namespace Web
 
             // Code for registering our repo and DI
             var container = new Container();
+            container.Register<IUserService, UserService>();
 
 
             // This two extension method from integration package
