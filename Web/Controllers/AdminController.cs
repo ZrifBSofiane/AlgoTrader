@@ -12,10 +12,12 @@ namespace Web.Controllers
     {
 
         private readonly IUserService _userService;
+        private readonly IAccountService _accountService;
 
-        public AdminController(IUserService userService)
+        public AdminController(IUserService userService, IAccountService accountService)
         {
             _userService = userService;
+            _accountService = accountService;
         }
 
         // GET: Admin
@@ -28,6 +30,13 @@ namespace Web.Controllers
         {
             var users = _userService.Get();
             return View(users);
+        }
+
+        [HttpGet]
+        public PartialViewResult GetDetailUser(string idUser)
+        {
+            var _account = _accountService.Get(new Guid(idUser));
+            return PartialView("PartialUserDetails", _account);
         }
     }
 }

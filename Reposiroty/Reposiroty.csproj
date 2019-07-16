@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="AlgoDbContext.cs" />
     <Compile Include="Config\ApplicationUser.cs" />
+    <Compile Include="DataAccess\AccountRepository.cs" />
     <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Migrations\201907092024009_Init.cs" />
     <Compile Include="Migrations\201907092024009_Init.Designer.cs">
@@ -86,8 +87,34 @@
     <Compile Include="Migrations\201907101855503_Migration2.Designer.cs">
       <DependentUpon>201907101855503_Migration2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907161822578_InitAccount.cs" />
+    <Compile Include="Migrations\201907161822578_InitAccount.Designer.cs">
+      <DependentUpon>201907161822578_InitAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161824366_NameForex.cs" />
+    <Compile Include="Migrations\201907161824366_NameForex.Designer.cs">
+      <DependentUpon>201907161824366_NameForex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161827275_ParameterTable.cs" />
+    <Compile Include="Migrations\201907161827275_ParameterTable.Designer.cs">
+      <DependentUpon>201907161827275_ParameterTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161828172_ParameterTableAdd.cs" />
+    <Compile Include="Migrations\201907161828172_ParameterTableAdd.Designer.cs">
+      <DependentUpon>201907161828172_ParameterTableAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161902108_TypeAmount.cs" />
+    <Compile Include="Migrations\201907161902108_TypeAmount.Designer.cs">
+      <DependentUpon>201907161902108_TypeAmount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\Forex.cs" />
+    <Compile Include="Models\Parameter.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Progression.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +127,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907101855503_Migration2.resx">
       <DependentUpon>201907101855503_Migration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161822578_InitAccount.resx">
+      <DependentUpon>201907161822578_InitAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161824366_NameForex.resx">
+      <DependentUpon>201907161824366_NameForex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161827275_ParameterTable.resx">
+      <DependentUpon>201907161827275_ParameterTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161828172_ParameterTableAdd.resx">
+      <DependentUpon>201907161828172_ParameterTableAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161902108_TypeAmount.resx">
+      <DependentUpon>201907161902108_TypeAmount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

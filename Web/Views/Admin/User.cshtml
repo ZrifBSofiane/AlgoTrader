@@ -51,11 +51,14 @@
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Pseudo)
-                                        </td>        
+                                        </td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                            <button type="button" class="viewUser btn btn-primary btn-icon wave-effect md-trigger" data-url="@Url.Action("GetDetailUser","Admin", new {idUser = item.Id })" data-id="@item.Id" data-modal="modal-9">
+                                                <i class="icofont icofont-user-alt-3"></i>
+                                            </button>
+                                            <button class="btn btn-inverse btn-icon" data-id="@item.Id">
+                                                <i class="icofont icofont-exchange"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 }
@@ -64,6 +67,40 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+@*Modal*@
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
+</div>
+<div class="md-modal md-effect-9" id="modal-9">
+    <div class="md-content">
+        <h3>Details</h3>
+    </div>
+</div>
+
+
+
+
+
+@section scripts {
+    <script src="~/Scripts/Admin/User.js"></script>
+}

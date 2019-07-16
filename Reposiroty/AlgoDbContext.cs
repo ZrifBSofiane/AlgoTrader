@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Reposiroty.Config;
-
+using Reposiroty.Models;
 
 namespace Reposiroty
 {
@@ -16,6 +16,13 @@ namespace Reposiroty
         {
 
         }
+
+        public virtual DbSet<Account> Account { get; set; }
+        public virtual DbSet<Forex> Forex{ get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Progression> Progression { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<Parameter> Parameters { get; set; }
 
 
 

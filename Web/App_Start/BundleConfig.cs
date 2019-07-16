@@ -49,7 +49,10 @@ namespace Web
                       "~/Content/files/assets/pages/chart/radial/css/radial.css",
                       "~/Content/files/assets/icon/feather/css/feather.css",
                       "~/Content/files/assets/css/style.css",
-                      "~/Content/files/assets/css/jquery.mCustomScrollbar.css"));
+                      "~/Content/files/assets/css/jquery.mCustomScrollbar.css",
+                      "~/Content/files/assets/icon/themify-icons/themify-icons.css",
+                      "~/Content/files/assets/icon/feather/css/feather.css",
+                      "~/Content/files/assets/icon/icofont/css/icofont.css"));
         }
     }
 }

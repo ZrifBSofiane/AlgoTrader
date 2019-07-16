@@ -21,6 +21,7 @@ namespace Web
             // Code for registering our repo and DI
             var container = new Container();
             container.Register<IUserService, UserService>();
+            container.Register<IAccountService, AccountService>();
 
 
             // This two extension method from integration package

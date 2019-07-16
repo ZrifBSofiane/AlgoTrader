@@ -27,7 +27,6 @@ namespace Reposiroty.DataAccess
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-
             }
             
 
