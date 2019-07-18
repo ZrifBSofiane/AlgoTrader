@@ -165,11 +165,14 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\ProductController\NewForexProductVM.cs" />
+    <Compile Include="ViewModel\ProductController\NewProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -182,6 +185,7 @@
     <Content Include="Content\files\assets\css\linearicons.css" />
     <Content Include="Content\files\assets\css\pcoded-horizontal.min.css" />
     <Content Include="Content\files\assets\css\style.css" />
+    <Content Include="Content\files\assets\css\toastr.min.css" />
     <Content Include="Content\files\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\files\assets\fonts\Linearicons-Free.svg" />
     <Content Include="Content\files\assets\icon\feather\css\feather.css" />
@@ -641,6 +645,7 @@
     <Content Include="Content\files\assets\js\script.min.js" />
     <Content Include="Content\files\assets\js\SmoothScroll.js" />
     <Content Include="Content\files\assets\js\swiper-custom.js" />
+    <Content Include="Content\files\assets\js\toastr.min.js" />
     <Content Include="Content\files\assets\js\vartical-layout.min.js" />
     <Content Include="Content\files\assets\pages\accordion\accordion.js" />
     <Content Include="Content\files\assets\pages\ace-editor\ace-editor-custom.js" />
@@ -1678,6 +1683,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Admin\Product.js" />
     <Content Include="Scripts\Admin\User.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1831,6 +1837,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\User.cshtml" />
     <Content Include="Views\Admin\PartialUserDetails.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\AddProduct\PartialAddForex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

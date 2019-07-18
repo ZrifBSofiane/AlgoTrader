@@ -142,5 +142,34 @@ namespace Reposiroty.DataAccess
             }
             return false;
         }
+
+        public bool BlockOrUnBlockAccount(Guid idUser)
+        {
+            try
+            {
+                using (var context = new AlgoDbContext())
+                {
+                    var user = context.Account.FirstOrDefault(r => r.User.Id == idUser.ToString());
+                    if (user != null)
+                    {
+                        if (user.User.IsBlocked.Value) // if already blocked => allow
+                            user.User.IsBlocked = false;
+                        else
+                            user.User.IsBlocked = true;
+                        context.SaveChanges();
+                    } 
+                    return true;
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return false;
+        }
     }
 }

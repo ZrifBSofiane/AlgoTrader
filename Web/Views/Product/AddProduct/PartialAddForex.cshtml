@@ -1,4 +1,4 @@
-﻿@model Service.DTO.AccountDTO
+﻿@model Web.ViewModel.ProductController.NewForexProductVM
 
 @using (Html.BeginForm())
 {
@@ -16,16 +16,16 @@
                                         <table class="table m-0">
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row">@Html.LabelFor(model => model.User.Name, htmlAttributes: new { })</th>
-                                                    <td>@Html.EditorFor(model => model.User.Name, new { htmlAttributes = new { @class = "disabled",@readonly = "readonly" } })</td>
+                                                    <th scope="row">@Html.LabelFor(model => model.Product.Name, htmlAttributes: new { })</th>
+                                                    <td>@Html.EditorFor(model => model.Product.Name, new { htmlAttributes = new {  } })</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">@Html.LabelFor(model => model.User.Surname, htmlAttributes: new { })</th>
-                                                    <td>@Html.EditorFor(model => model.User.Surname, new { htmlAttributes = new { @class = "disabled",@readonly = "readonly" } })</td>
+                                                    <th scope="row">@Html.LabelFor(model => model.Product.Market, htmlAttributes: new { })</th>
+                                                    <td>@Html.EditorFor(model => model.Product.Market, new { htmlAttributes = new {  } })</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">@Html.LabelFor(model => model.User.Email, htmlAttributes: new { })</th>
-                                                    <td>@Html.EditorFor(model => model.User.Email, new { htmlAttributes = new { @class = "disabled",@readonly = "readonly" } })</td>
+                                                    <th scope="row">@Html.LabelFor(model => model.Product.Type, htmlAttributes: new { })</th>
+                                                    <td>@Html.EditorFor(model => model.Product.Type, new { htmlAttributes = new { @value = "FOREX", @class = "disabled", @readonly = "readonly" } })</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -37,20 +37,20 @@
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row">@Html.LabelFor(model => model.User.DateBirth, htmlAttributes: new { })</th>
-                                                    <td>@Html.EditorFor(model => model.User.DateBirth, new { htmlAttributes = new { @class = "disabled", @readonly = "readonly" } })</td>
+                                                    <th scope="row">@Html.LabelFor(model => model.Forex.Asset, htmlAttributes: new { })</th>
+                                                    <td>@Html.EditorFor(model => model.Forex.Asset, new { htmlAttributes = new {  } })</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">@Html.LabelFor(model => model.User.Pseudo, htmlAttributes: new { })</th>
-                                                    <td>@Html.EditorFor(model => model.User.Pseudo, new { htmlAttributes = new { @class = "disabled", @readonly = "readonly" } })</td>
+                                                    <th scope="row">@Html.LabelFor(model => model.Forex.Base, htmlAttributes: new { })</th>
+                                                    <td>@Html.EditorFor(model => model.Forex.Base, new { htmlAttributes = new {  } })</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">@Html.LabelFor(model => model.Amount, htmlAttributes: new { })</th>
-                                                    <td>@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "disabled", @readonly = "readonly" } })</td>
+                                                    <th scope="row">@Html.LabelFor(model => model.Forex.Pip, htmlAttributes: new { })</th>
+                                                    <td>@Html.EditorFor(model => model.Forex.Pip, new { htmlAttributes = new {  } })</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">@Html.LabelFor(model => model.User.IsBlocked, htmlAttributes: new { })</th>
-                                                    <td>@Html.EditorFor(model => model.User.IsBlocked, new { htmlAttributes = new { @class = "disabled", @readonly = "readonly" } })</td>
+                                                    <th scope="row">@Html.LabelFor(model => model.Forex.MarginPercentage, htmlAttributes: new { })</th>
+                                                    <td>@Html.EditorFor(model => model.Forex.MarginPercentage, new { htmlAttributes = new {  } })</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -67,7 +67,8 @@
                 <!-- end of row -->
             </div>
             <!-- end of view-info -->
-        </div>    
+        </div>
     </div>
 }
+
 

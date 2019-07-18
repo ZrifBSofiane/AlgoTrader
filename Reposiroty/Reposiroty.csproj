@@ -78,6 +78,8 @@
     <Compile Include="AlgoDbContext.cs" />
     <Compile Include="Config\ApplicationUser.cs" />
     <Compile Include="DataAccess\AccountRepository.cs" />
+    <Compile Include="DataAccess\ForexRepository.cs" />
+    <Compile Include="DataAccess\ProductRepository.cs" />
     <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Migrations\201907092024009_Init.cs" />
     <Compile Include="Migrations\201907092024009_Init.Designer.cs">
@@ -106,6 +108,26 @@
     <Compile Include="Migrations\201907161902108_TypeAmount.cs" />
     <Compile Include="Migrations\201907161902108_TypeAmount.Designer.cs">
       <DependentUpon>201907161902108_TypeAmount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907171949044_ForeignForexProduct.cs" />
+    <Compile Include="Migrations\201907171949044_ForeignForexProduct.Designer.cs">
+      <DependentUpon>201907171949044_ForeignForexProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907171950495_ForeignForexProduct1.cs" />
+    <Compile Include="Migrations\201907171950495_ForeignForexProduct1.Designer.cs">
+      <DependentUpon>201907171950495_ForeignForexProduct1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181746306_TypeProduct.cs" />
+    <Compile Include="Migrations\201907181746306_TypeProduct.Designer.cs">
+      <DependentUpon>201907181746306_TypeProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181935087_PipMarginForex.cs" />
+    <Compile Include="Migrations\201907181935087_PipMarginForex.Designer.cs">
+      <DependentUpon>201907181935087_PipMarginForex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181942360_DecimalPipForex.cs" />
+    <Compile Include="Migrations\201907181942360_DecimalPipForex.Designer.cs">
+      <DependentUpon>201907181942360_DecimalPipForex.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -142,6 +164,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907161902108_TypeAmount.resx">
       <DependentUpon>201907161902108_TypeAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907171949044_ForeignForexProduct.resx">
+      <DependentUpon>201907171949044_ForeignForexProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907171950495_ForeignForexProduct1.resx">
+      <DependentUpon>201907171950495_ForeignForexProduct1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181746306_TypeProduct.resx">
+      <DependentUpon>201907181746306_TypeProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181935087_PipMarginForex.resx">
+      <DependentUpon>201907181935087_PipMarginForex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181942360_DecimalPipForex.resx">
+      <DependentUpon>201907181942360_DecimalPipForex.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

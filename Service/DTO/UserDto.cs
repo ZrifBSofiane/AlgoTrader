@@ -16,5 +16,6 @@ namespace Service.DTO
         public DateTime? DateBirth { get; set; }
         public String Pseudo { get; set; }
         public string Password { get; set; }
+        public bool? IsBlocked { get; set; }
     }
 }

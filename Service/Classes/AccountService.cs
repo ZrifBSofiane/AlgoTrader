@@ -17,6 +17,12 @@ namespace Service.Classes
         private readonly IAccountFactory _factory = new AccountFactory();
         private readonly IObjectFactory<ApplicationUser, UserDto> _factoryUser = new ObjectFactory<ApplicationUser, UserDto>();
         private readonly AccountRepository _repository = new AccountRepository();
+
+        public bool BlockOrUnBlockAccount(Guid idUser)
+        {
+            return _repository.BlockOrUnBlockAccount(idUser);
+        }
+
         public List<AccountDTO> Get()
         {
             List<Account> result = _repository.Get();

@@ -15,5 +15,14 @@ namespace Reposiroty.Models
             Trader,
             User
         }
+
+        public enum TypeProduct
+        {
+            FOREX,
+            OPTION,
+            FUTURE,
+            BOND,
+            EQUITY
+        }
     }
 }

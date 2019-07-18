@@ -30,6 +30,7 @@ namespace Reposiroty
         {
             base.OnModelCreating(modelBuilder);
             // Add here specifications like Precision of double or NULL / Default value
+            modelBuilder.Entity<Forex>().Property(f => f.Pip).HasPrecision(18, 7);
         }
 
         public static AlgoDbContext Create()

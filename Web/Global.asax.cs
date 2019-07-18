@@ -22,6 +22,8 @@ namespace Web
             var container = new Container();
             container.Register<IUserService, UserService>();
             container.Register<IAccountService, AccountService>();
+            container.Register<IForexService, ForexService>();
+            container.Register<IProductService, ProductService>();
 
 
             // This two extension method from integration package

@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Classes\AccountService.cs" />
+    <Compile Include="Classes\ForexService.cs" />
+    <Compile Include="Classes\ProductService.cs" />
     <Compile Include="Classes\UserService.cs" />
     <Compile Include="DTO\AccountDTO.cs" />
     <Compile Include="DTO\ForexDTO.cs" />
@@ -66,10 +68,14 @@
     <Compile Include="DTO\ProgressionDTO.cs" />
     <Compile Include="DTO\TransactionDTO.cs" />
     <Compile Include="DTO\UserDto.cs" />
+    <Compile Include="Factory\IForexFactory.cs" />
     <Compile Include="Factory\IAccountFactory.cs" />
     <Compile Include="Factory\IObjectFactory.cs" />
+    <Compile Include="Factory\IProductFactory.cs" />
     <Compile Include="Factory\IUserFactory.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
+    <Compile Include="Interfaces\IForexService.cs" />
+    <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -15,6 +15,8 @@ namespace Service.Interfaces
          bool UpdateAmount(decimal amount, UserDto User);
          bool UpdateAmount(decimal amount, Guid id);
          bool UpdateAmount(decimal amount, string email);
+         bool BlockOrUnBlockAccount(Guid idUser);   
+    
 
 
     }

@@ -52,7 +52,7 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(UserDto user, string returnUrl = null)
         {
-            var _user = await UserManager.FindByEmailAsync(user.Email);
+             var _user = await UserManager.FindByEmailAsync(user.Email);
             if (_user != null)
             {
                 if (UserManager.CheckPasswordAsync(_user, user.Password).Result)

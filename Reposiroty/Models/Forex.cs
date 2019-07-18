@@ -15,5 +15,11 @@ namespace Reposiroty.Models
         public int Id { get; set; }
         public String Asset { get; set; }
         public String Base { get; set; }
+        public decimal Pip { get; set; }
+        public decimal MarginPercentage { get; set; }
+
+
+        public virtual ICollection<Product> Product { get; set; }
+        
     }
 }

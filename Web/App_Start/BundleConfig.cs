@@ -32,7 +32,8 @@ namespace Web
                        "~/Content/files/assets/js/jquery.mCustomScrollbar.concat.min.js",
                        "~/Content/files/assets/pages/dashboard/crm-dashboard.min.js",
                        "~/Content/files/assets/pages/js/script.js",
-                       "~/Content/files/assets/js/script.js"));
+                       "~/Content/files/assets/js/script.js",
+                       "~/Content/files/assets/js/toastr.min.js"));
 
 
 
@@ -52,7 +53,8 @@ namespace Web
                       "~/Content/files/assets/css/jquery.mCustomScrollbar.css",
                       "~/Content/files/assets/icon/themify-icons/themify-icons.css",
                       "~/Content/files/assets/icon/feather/css/feather.css",
-                      "~/Content/files/assets/icon/icofont/css/icofont.css"));
+                      "~/Content/files/assets/icon/icofont/css/icofont.css",
+                       "~/Content/files/assets/css/toastr.min.css"));
         }
     }
 }

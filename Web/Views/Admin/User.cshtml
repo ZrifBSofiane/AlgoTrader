@@ -59,6 +59,9 @@
                                             <button class="btn btn-inverse btn-icon" data-id="@item.Id">
                                                 <i class="icofont icofont-exchange"></i>
                                             </button>
+                                            <button type="button" class="block btn btn-inverse btn-icon" data-url="@Url.Action("BlockOrUnBlockUser","Admin", new {idUser = item.Id })">
+                                                <i class="icofont icofont-close"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 }
@@ -72,8 +75,8 @@
 </div>
 
 @*Modal*@
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" >
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle">Details</h5>
@@ -91,11 +94,7 @@
         </div>
     </div>
 </div>
-<div class="md-modal md-effect-9" id="modal-9">
-    <div class="md-content">
-        <h3>Details</h3>
-    </div>
-</div>
+
 
 
 

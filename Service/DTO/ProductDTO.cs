@@ -11,7 +11,8 @@ namespace Service.DTO
         public int Id { get; set; }
         public String Name { get; set; }
         public String Market { get; set; }
+        public String Type { get; set; }
 
-        public virtual ICollection<TransactionDTO> Transactions { get; set; }
+        public ForexDTO Forex { get; set; }
     }
 }
