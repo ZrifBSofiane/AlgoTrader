@@ -36,7 +36,7 @@ namespace Reposiroty.DataAccess
             return null;
         }
 
-        public bool AddForex(string baseCurr, string assetCurr, string market, string name)
+        public bool AddForex(string baseCurr, string assetCurr, string market, string name, decimal pip, decimal margin)
         {
             try
             {
@@ -50,12 +50,15 @@ namespace Reposiroty.DataAccess
                     {
                         Asset = assetCurr.ToUpper(),
                         Base = baseCurr.ToUpper(),
+                        MarginPercentage = margin,
+                        Pip = pip,
                     };
                     var newProduct = new Product()
                     {
                         Forex = newFx,
                         Market = market.ToUpper(),
                         Name = name.ToUpper(),
+                        Type = Enums.TypeProduct.FOREX.ToString().ToUpper(),
                     };
                     context.Product.Add(newProduct);
                     context.SaveChanges();

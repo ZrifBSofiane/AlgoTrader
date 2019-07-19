@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <h5>Auto Fill</h5>
                     <span>AutoFill gives an Excel like option to a DataTable to click and drag over multiple cells, filling in information over the selected cells and incrementing numbers as needed.</span>
-                    
+
                     <div class="card-header-right">
                         <ul class="list-unstyled card-option">
                             <li><i class="feather icon-maximize full-card"></i></li>
@@ -42,20 +42,46 @@
 
 @*Modal*@
 <div id="addProductModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal1kWidth modal-dialog modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Details</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">Add Product</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <div class="col-sm-12 align-center">
+                    <div class="form-radio">
+                        <form id="productTypeButtonRadio">
+                            <div class="radio radio-outline radio-inline">
+                                <label>
+                                    <input type="radio" name="radio" value="FOREX" checked="checked">
+                                    <i class="helper"></i>FOREX
+                                </label>
+                            </div>
+                            <div class="radio radio-outline radio-inline">
+                                <label>
+                                    <input type="radio" name="radio" value="OPTION">
+                                    <i class="helper"></i>OPTION
+                                </label>
+                            </div>
+                            <div class="radio radio-outline radio-inline">
+                                <label>
+                                    <input type="radio" name="radio" value="FUTURE">
+                                    <i class="helper"></i>FUTURE
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="bodyProduct">
+                    ...
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" id="closeModalAddProduct" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" data-addProductUrl="@Url.Action("AddProduct","Product")" id="addProductButton" class="btn btn-primary">Add Product</button>
             </div>
         </div>
     </div>

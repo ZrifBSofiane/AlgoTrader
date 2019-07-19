@@ -15,9 +15,9 @@ namespace Service.Classes
         private readonly ProductRepository _reposiroty = new ProductRepository();
         private readonly IProductFactory _factory = new ProductFactory();
 
-        public bool AddForex(string baseCurr, string assetCurr, string market, string name)
+        public bool AddForex(string baseCurr, string assetCurr, string market, string name, decimal pip, decimal margin)
         {
-            return _reposiroty.AddForex(baseCurr, assetCurr, market, name);
+            return _reposiroty.AddForex(baseCurr, assetCurr, market, name, pip, margin);
         }
 
         public List<ProductDTO> Get()

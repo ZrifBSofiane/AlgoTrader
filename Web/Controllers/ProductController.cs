@@ -3,6 +3,7 @@ using Service.Factory;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -52,14 +53,14 @@ namespace Web.Controllers
         }
 
 
-
+        [HttpPost]
         public JsonResult AddProduct(NewProductViewModel model)
         {
             var isOk = false;
             switch (model.Type.Trim().ToUpper())
             {
                 case "FOREX": // change with ProductType Enum
-                    isOk = _productService.AddForex(model.Param1, model.Param2, model.Market, model.Name);
+                    isOk = _productService.AddForex(model.Param1, model.Param2, model.Market, model.Name, Convert.ToDecimal(model.Param3, System.Globalization.CultureInfo.InvariantCulture), Convert.ToDecimal(model.Param4, System.Globalization.CultureInfo.InvariantCulture));
                     break;
             }
 

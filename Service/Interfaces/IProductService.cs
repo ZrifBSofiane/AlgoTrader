@@ -10,6 +10,6 @@ namespace Service.Interfaces
     public interface IProductService
     {
         List<ProductDTO> Get();
-        bool AddForex(string baseCurr, string assetCurr, string market, string name);
+        bool AddForex(string baseCurr, string assetCurr, string market, string name, decimal pip, decimal margin);
     }
 }

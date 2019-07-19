@@ -46,6 +46,7 @@ namespace Web
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/Site.css",
                       "~/Content/files/bower_components/bootstrap/css/bootstrap.min.css",
                       "~/Content/files/assets/pages/chart/radial/css/radial.css",
                       "~/Content/files/assets/icon/feather/css/feather.css",

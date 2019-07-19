@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+.modal1kWidth {
+    width: 1000px !important;
+    max-width: 1000px !important;
+    margin: auto;
+}
+
+.align-center{
+    text-align: center;
+}
