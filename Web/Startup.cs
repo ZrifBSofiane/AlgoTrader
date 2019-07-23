@@ -3,11 +3,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using Reposiroty;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Web;
 
 [assembly: OwinStartup(typeof(Web.Startup))]
 namespace Web
@@ -35,6 +31,11 @@ namespace Web
             app.CreatePerOwinContext<AlgoDbContext>(AlgoDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+
+            //*******************************************
+            //                SignalR                   *
+            //*******************************************
+            app.MapSignalR();
         }
     }
 }

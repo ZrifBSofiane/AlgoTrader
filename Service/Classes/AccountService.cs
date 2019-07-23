@@ -39,6 +39,26 @@ namespace Service.Classes
             return _factory.Create(_repository.Get(email));
         }
 
+        public string GetSignalRIdByUser(Guid idUser)
+        {
+            return _repository.GetSignalRIdByUser(idUser);
+        }
+
+        public string GetSignalRIdByUser(string username)
+        {
+            return _repository.GetSignalRIdByUser(username);
+        }
+
+        public List<string> GetSignalRIdByUser(List<Guid> idUser)
+        {
+            return _repository.GetSignalRIdByUser(idUser);
+        }
+
+        public List<string> GetSignalRIdByUser(List<string> username)
+        {
+            return _repository.GetSignalRIdByUser(username);
+        }
+
         public bool UpdateAmount(decimal amount, UserDto User)
         {
             return _repository.UpdateAmount(amount, _factoryUser.CreateDb(User));
@@ -52,6 +72,16 @@ namespace Service.Classes
         public bool UpdateAmount(decimal amount, string email)
         {
             return _repository.UpdateAmount(amount, email);
+        }
+
+        public bool UpdateSignalRId(Guid idUser, string idSignalR)
+        {
+            return _repository.UpdateSignalRId(idUser, idSignalR);
+        }
+
+        public bool UpdateSignalRId(string idUuserName, string idSignalR)
+        {
+            return _repository.UpdateSignalRId(idUuserName, idSignalR);
         }
     }
 }

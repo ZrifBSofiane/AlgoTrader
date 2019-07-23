@@ -9,7 +9,7 @@ namespace Reposiroty.Models
         [Key]
         public int Id { get; set; }
         public decimal Amount { get; set; }
-
+        public string SignalRId { get; set; }
 
         //Foreign Key
         public virtual ApplicationUser User { get; set; }

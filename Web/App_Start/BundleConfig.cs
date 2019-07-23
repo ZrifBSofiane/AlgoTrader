@@ -17,6 +17,14 @@ namespace Web
                        "~/Content/files/bower_components/popper.js/js/popper.min.js",
                        "~/Content/files/bower_components/bootstrap/js/bootstrap.min.js"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/realtime").Include(
+                      "~/Scripts/jquery.signalR-2.4.1.js",
+                      "~/signalr/hubs",
+                      "~/Scripts/ContextWebsite/Context.js"));
+
+
+
             bundles.Add(new ScriptBundle("~/bundles/components").Include(
                        "~/Content/files/bower_components/jquery-slimscroll/js/jquery.slimscroll.js",
                        "~/Content/files/bower_components/modernizr/js/modernizr.js",

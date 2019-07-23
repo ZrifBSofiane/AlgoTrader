@@ -10,6 +10,7 @@ namespace Service.DTO
     {
         public int Id { get; set; }
         public decimal Amount { get; set; }
+        public string SignalRId { get; set; }
         public UserDto User { get; set; }
     }
 }

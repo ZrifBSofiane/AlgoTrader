@@ -129,6 +129,10 @@
     <Compile Include="Migrations\201907181942360_DecimalPipForex.Designer.cs">
       <DependentUpon>201907181942360_DecimalPipForex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907221842225_SignalRId.cs" />
+    <Compile Include="Migrations\201907221842225_SignalRId.Designer.cs">
+      <DependentUpon>201907221842225_SignalRId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Enums.cs" />
@@ -179,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907181942360_DecimalPipForex.resx">
       <DependentUpon>201907181942360_DecimalPipForex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907221842225_SignalRId.resx">
+      <DependentUpon>201907221842225_SignalRId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

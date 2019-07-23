@@ -1,0 +1,281 @@
+﻿@model Web.ViewModel.PlatformController.PlatformVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-body">
+    <div class="row">
+        @Html.HiddenFor(m => m.Ticker)
+        <!-- task, page, download counter  start -->
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-c-yellow update-card">
+                <div class="card-block">
+                    <div class="row align-items-end">
+                        <div class="col-8">
+                            <h4 class="text-white" id="Balance">$30200</h4>
+                            <h6 class="text-white m-b-0">Balance</h6>
+                        </div>
+                        <div class="col-4 text-right">
+                            <canvas id="update-chart-1" height="50"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : @DateTime.Now</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-c-green update-card">
+                <div class="card-block">
+                    <div class="row align-items-end">
+                        <div class="col-8">
+                            <h4 class="text-white" id="MarginFree">$30200</h4>
+                            <h6 class="text-white m-b-0">Margin free</h6>
+                        </div>
+                        <div class="col-4 text-right">
+                            <canvas id="update-chart-2" height="50"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-c-green update-card">
+
+                <div class="fx-header">
+                    <h3>GBP USD</h3>
+                </div>
+                <div class="buy-sell">
+
+                    <div class="sell-wrapper">
+                        <div class="content-left" id="sellButton">
+                            <span class="sell-inside-header">Sell GBP</span>
+                            <div class="sell-inside-numbers">
+                                <span id="bidInt" class="sell-inside-number-1">123.</span>
+                                <span id="bidFigure" class="sell-inside-number-2">123</span>
+                                <span id="bidPip" class="sell-inside-number-3">7</span>
+                            </div>
+                        </div>
+                        <div class="comp-triangle-left">
+                            <div class="first-left"></div>
+                            <div class="second-left"></div>
+                            <div class="third-left"></div>
+                        </div>
+                    </div>
+
+                    <span class="status-icon-up" id="status-icon-up"></span>
+                    <div class="">
+                        <div class="input-group no-margin">
+                            <span class="input-group-addon border-6">+0.1</span>
+                            <span class="input-group-addon border-6" style="margin-left:26px">+0.01</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Multiple addons" value="0.1">
+                        <div class="input-group no-margin">
+                            <span class="input-group-addon border-6">-0.1</span>
+                            <span class="input-group-addon border-6" style="margin-left:34px">-0.01</span>
+                        </div>
+                    </div>
+                    <span class="status-icon-down" id="status-icon-down"></span>
+
+                    <div class="buy-wrapper">
+                        <div class="content-right" id="buyButton">
+                            <span class="buy-inside-header">Buy USD</span>
+                            <div class="buy-inside-numbers">
+                                <span id="askInt" class="buy-inside-number-1">123.</span>
+                                <span id="askFigure" class="buy-inside-number-2">123</span>
+                                <span id="askPip" class="buy-inside-number-3">7</span>
+                            </div>
+                        </div>
+                        <div class="comp-triangle-right">
+                            <div class="first-right"></div>
+                            <div class="second-right"></div>
+                            <div class="third-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-c-lite-green update-card">
+                <div class="card-block">
+                    <div class="row align-items-end">
+                        <div class="col-8">
+                            <h4 class="text-white">500</h4>
+                            <h6 class="text-white m-b-0">Downloads</h6>
+                        </div>
+                        <div class="col-4 text-right">
+                            <canvas id="update-chart-4" height="50"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                </div>
+            </div>
+        </div>
+        <!-- task, page, download counter  end -->
+        <!--  sale analytics start -->
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Sales Analytics</h5>
+                    <span class="text-muted">For more details about usage, please refer <a href="https://www.amcharts.com/online-store/" target="_blank">amCharts</a> licences.</span>
+                    <div class="card-header-right">
+                        <ul class="list-unstyled card-option">
+                            <li><i class="feather icon-maximize full-card"></i></li>
+                            <li><i class="feather icon-minus minimize-card"></i></li>
+                            <li><i class="feather icon-trash-2 close-card"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div id="chartPlatform"></div>
+                </div>
+            </div>
+        </div>
+        <!--  sale analytics end -->
+
+        <div class="col-xl-12">
+            <div class="card table-card">
+                <div class="card-header">
+                    <h5>Application Sales</h5>
+                    <div class="card-header-right">
+                        <ul class="list-unstyled card-option">
+                            <li><i class="feather icon-maximize full-card"></i></li>
+                            <li><i class="feather icon-minus minimize-card"></i></li>
+                            <li><i class="feather icon-trash-2 close-card"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="table-responsive">
+                        <table class="table table-hover  table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        Application
+                                    </th>
+                                    <th>Sales</th>
+                                    <th>Change</th>
+                                    <th>Avg Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block align-middle">
+                                            <h6>Able Pro</h6>
+                                            <p class="text-muted m-b-0">Powerful Admin Theme</p>
+                                        </div>
+                                    </td>
+                                    <td>16,300</td>
+                                    <td><canvas id="app-sale1" height="50" width="100"></canvas></td>
+                                    <td>$53</td>
+                                    <td class="text-c-blue">$15,652</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block align-middle">
+                                            <h6>Photoshop</h6>
+                                            <p class="text-muted m-b-0">Design Software</p>
+                                        </div>
+                                    </td>
+                                    <td>26,421</td>
+                                    <td><canvas id="app-sale2" height="50" width="100"></canvas></td>
+                                    <td>$35</td>
+                                    <td class="text-c-blue">$18,785</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block align-middle">
+                                            <h6>Guruable</h6>
+                                            <p class="text-muted m-b-0">Best Admin Template</p>
+                                        </div>
+                                    </td>
+                                    <td>8,265</td>
+                                    <td><canvas id="app-sale3" height="50" width="100"></canvas></td>
+                                    <td>$98</td>
+                                    <td class="text-c-blue">$9,652</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chk-option">
+                                            <div class="checkbox-fade fade-in-primary">
+                                                <label class="check-task">
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr">
+                                                        <i class="cr-icon feather icon-check txt-default"></i>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block align-middle">
+                                            <h6>Flatable</h6>
+                                            <p class="text-muted m-b-0">Admin App</p>
+                                        </div>
+                                    </td>
+                                    <td>10,652</td>
+                                    <td><canvas id="app-sale4" height="50" width="100"></canvas></td>
+                                    <td>$20</td>
+                                    <td class="text-c-blue">$7,856</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            <a href="#!" class=" b-b-primary text-primary">View all Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/Platform/Trading.js"></script>
+}
