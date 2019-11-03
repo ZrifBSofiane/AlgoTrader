@@ -1,281 +1,703 @@
 ﻿@model Web.ViewModel.PlatformController.PlatformVM
 @{
     ViewBag.Title = "Index";
+    Layout = null;
 }
+<html lang="en">
 
-<div class="page-body">
-    <div class="row">
-        @Html.HiddenFor(m => m.Ticker)
-        <!-- task, page, download counter  start -->
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-c-yellow update-card">
-                <div class="card-block">
-                    <div class="row align-items-end">
-                        <div class="col-8">
-                            <h4 class="text-white" id="Balance">$30200</h4>
-                            <h6 class="text-white m-b-0">Balance</h6>
-                        </div>
-                        <div class="col-4 text-right">
-                            <canvas id="update-chart-1" height="50"></canvas>
-                        </div>
-                    </div>
+<head>
+    <title>Adminty - Premium Admin Template by Colorlib </title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="#">
+    <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="#">
+    <!-- Favicon icon -->
+    <link rel="icon" href="..\files\assets\images\favicon.ico" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <!-- Required Fremwork -->
+    @*<link rel="stylesheet" type="text/css" href="..\files\bower_components\bootstrap\css\bootstrap.min.css">
+        <!-- radial chart.css -->
+        <link rel="stylesheet" href="..\files\assets\pages\chart\radial\css\radial.css" type="text/css" media="all">
+        <!-- feather Awesome -->
+        <link rel="stylesheet" type="text/css" href="..\files\assets\icon\feather\css\feather.css">
+        <!-- Style.css -->
+        <link rel="stylesheet" type="text/css" href="..\files\assets\css\style.css">
+        <link rel="stylesheet" type="text/css" href="..\files\assets\css\jquery.mCustomScrollbar.css">*@
+
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-2.0.0/sl-1.3.0/datatables.min.css" />
+</head>
+<!-- Menu sidebar static layout -->
+
+<body>
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
                 </div>
-                <div class="card-footer">
-                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : @DateTime.Now</p>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-c-green update-card">
-                <div class="card-block">
-                    <div class="row align-items-end">
-                        <div class="col-8">
-                            <h4 class="text-white" id="MarginFree">$30200</h4>
-                            <h6 class="text-white m-b-0">Margin free</h6>
-                        </div>
-                        <div class="col-4 text-right">
-                            <canvas id="update-chart-2" height="50"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-c-green update-card">
+    </div>
+    <!-- Pre-loader end -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
 
-                <div class="fx-header">
-                    <h3>GBP USD</h3>
-                </div>
-                <div class="buy-sell">
+            <nav class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
 
-                    <div class="sell-wrapper">
-                        <div class="content-left" id="sellButton">
-                            <span class="sell-inside-header">Sell GBP</span>
-                            <div class="sell-inside-numbers">
-                                <span id="bidInt" class="sell-inside-number-1">123.</span>
-                                <span id="bidFigure" class="sell-inside-number-2">123</span>
-                                <span id="bidPip" class="sell-inside-number-3">7</span>
-                            </div>
-                        </div>
-                        <div class="comp-triangle-left">
-                            <div class="first-left"></div>
-                            <div class="second-left"></div>
-                            <div class="third-left"></div>
-                        </div>
+                    <div class="navbar-logo">
+                        <a class="mobile-menu" id="mobile-collapse" href="#!">
+                            <i class="feather icon-menu"></i>
+                        </a>
+                        <a href="index-1.htm">
+                            <img class="img-fluid" src="..\files\assets\images\logo.png" alt="Theme-Logo">
+                        </a>
+                        <a class="mobile-options">
+                            <i class="feather icon-more-horizontal"></i>
+                        </a>
                     </div>
 
-                    <span class="status-icon-up" id="status-icon-up"></span>
-                    <div class="">
-                        <div class="input-group no-margin">
-                            <span class="input-group-addon border-6">+0.1</span>
-                            <span class="input-group-addon border-6" style="margin-left:26px">+0.01</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Multiple addons" value="0.1">
-                        <div class="input-group no-margin">
-                            <span class="input-group-addon border-6">-0.1</span>
-                            <span class="input-group-addon border-6" style="margin-left:34px">-0.01</span>
-                        </div>
-                    </div>
-                    <span class="status-icon-down" id="status-icon-down"></span>
+                    <div class="navbar-container container-fluid">
+                        <ul class="nav-left">
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group">
+                                        <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#!" onclick="javascript:toggleFullScreen()">
+                                    <i class="feather icon-maximize full-screen"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav-center">
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group-trading">
+                                        <span class="titleSpan">Account</span>
 
-                    <div class="buy-wrapper">
-                        <div class="content-right" id="buyButton">
-                            <span class="buy-inside-header">Buy USD</span>
-                            <div class="buy-inside-numbers">
-                                <span id="askInt" class="buy-inside-number-1">123.</span>
-                                <span id="askFigure" class="buy-inside-number-2">123</span>
-                                <span id="askPip" class="buy-inside-number-3">7</span>
-                            </div>
-                        </div>
-                        <div class="comp-triangle-right">
-                            <div class="first-right"></div>
-                            <div class="second-right"></div>
-                            <div class="third-right"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-c-lite-green update-card">
-                <div class="card-block">
-                    <div class="row align-items-end">
-                        <div class="col-8">
-                            <h4 class="text-white">500</h4>
-                            <h6 class="text-white m-b-0">Downloads</h6>
-                        </div>
-                        <div class="col-4 text-right">
-                            <canvas id="update-chart-4" height="50"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
-                </div>
-            </div>
-        </div>
-        <!-- task, page, download counter  end -->
-        <!--  sale analytics start -->
-        <div class="col-xl-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Sales Analytics</h5>
-                    <span class="text-muted">For more details about usage, please refer <a href="https://www.amcharts.com/online-store/" target="_blank">amCharts</a> licences.</span>
-                    <div class="card-header-right">
-                        <ul class="list-unstyled card-option">
-                            <li><i class="feather icon-maximize full-card"></i></li>
-                            <li><i class="feather icon-minus minimize-card"></i></li>
-                            <li><i class="feather icon-trash-2 close-card"></i></li>
+                                        <label>@(Model.IdAccount)</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group-trading">
+                                        <span class="titleSpan">Capital</span>
+                                        <label id="capitalTrading">@(Model.Capital)</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group-trading">
+                                        <span class="titleSpan">Capital Free</span>
+                                        <label id="finalAmountTrading">@(Model.FinalAmount)</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group-trading">
+                                        <span class="titleSpan">Margin Used</span>
+                                        <label id="marginUsedTrading">@(Model.MarginUsed)</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group-trading">
+                                        <span class="titleSpan">Free Margin</span>
+                                        <label id="marginFreeTrading">@(Model.MarginFree)</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group-trading">
+                                        <span class="titleSpan">Gain / Loss</span>
+                                        <label id="gainLossTrading">@(Model.GainLoss)</label>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                        <ul class="nav-right">
+                            <li class="header-notification">
+                                <div class="dropdown-primary dropdown">
+                                    <div class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="feather icon-bell"></i>
+                                        <span class="badge bg-c-pink">5</span>
+                                    </div>
+                                    <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                        <li>
+                                            <h6>Notifications</h6>
+                                            <label class="label label-danger">New</label>
+                                        </li>
+                                        <li>
+                                            <div class="media">
+                                                <img class="d-flex align-self-center img-radius" src="..\files\assets\images\avatar-4.jpg" alt="Generic placeholder image">
+                                                <div class="media-body">
+                                                    <h5 class="notification-user">@User.Identity.Name</h5>
+                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                    <span class="notification-time">30 minutes ago</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media">
+                                                <img class="d-flex align-self-center img-radius" src="..\files\assets\images\avatar-3.jpg" alt="Generic placeholder image">
+                                                <div class="media-body">
+                                                    <h5 class="notification-user">Joseph William</h5>
+                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                    <span class="notification-time">30 minutes ago</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media">
+                                                <img class="d-flex align-self-center img-radius" src="..\files\assets\images\avatar-4.jpg" alt="Generic placeholder image">
+                                                <div class="media-body">
+                                                    <h5 class="notification-user">Sara Soudein</h5>
+                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                    <span class="notification-time">30 minutes ago</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="header-notification">
+                                <div class="dropdown-primary dropdown">
+                                    <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
+                                        <i class="feather icon-message-square"></i>
+                                        <span class="badge bg-c-green">3</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="user-profile header-notification">
+                                <div class="dropdown-primary dropdown">
+                                    <div class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="..\files\assets\images\avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                        <span>@User.Identity.Name</span>
+                                        <i class="feather icon-chevron-down"></i>
+                                    </div>
+                                    <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                        <li>
+                                            <a href="#!">
+                                                <i class="feather icon-settings"></i> Settings
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="user-profile.htm">
+                                                <i class="feather icon-user"></i> Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="email-inbox.htm">
+                                                <i class="feather icon-mail"></i> My Messages
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="auth-lock-screen.htm">
+                                                <i class="feather icon-lock"></i> Lock Screen
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="auth-normal-sign-in.htm">
+                                                <i class="feather icon-log-out"></i> Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div class="card-block">
-                    <div id="chartPlatform"></div>
-                </div>
-            </div>
-        </div>
-        <!--  sale analytics end -->
+            </nav>
 
-        <div class="col-xl-12">
-            <div class="card table-card">
-                <div class="card-header">
-                    <h5>Application Sales</h5>
-                    <div class="card-header-right">
-                        <ul class="list-unstyled card-option">
-                            <li><i class="feather icon-maximize full-card"></i></li>
-                            <li><i class="feather icon-minus minimize-card"></i></li>
-                            <li><i class="feather icon-trash-2 close-card"></i></li>
-                        </ul>
+            <!-- Sidebar chat start -->
+            <div id="sidebar" class="users p-chat-user showChat">
+                <div class="had-container">
+                    <div class="card card_main p-fixed users-main">
+                        <div class="user-box">
+                            <div class="chat-inner-header">
+                                <div class="back_chatBox">
+                                    <div class="right-icon-control">
+                                        <input type="text" class="form-control  search-text" placeholder="Search Friend" id="search-friends">
+                                        <div class="form-icon">
+                                            <i class="icofont icofont-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-friend-list">
+                                <div class="media userlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius img-radius" src="..\files\assets\images\avatar-3.jpg" alt="Generic placeholder image ">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Josephin Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="2" data-status="online" data-username="Lary Doe" data-toggle="tooltip" data-placement="left" title="Lary Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="..\files\assets\images\avatar-2.jpg" alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Lary Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice" data-toggle="tooltip" data-placement="left" title="Alice">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="..\files\assets\images\avatar-4.jpg" alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alice</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="4" data-status="online" data-username="Alia" data-toggle="tooltip" data-placement="left" title="Alia">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="..\files\assets\images\avatar-3.jpg" alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alia</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="5" data-status="online" data-username="Suzen" data-toggle="tooltip" data-placement="left" title="Suzen">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="..\files\assets\images\avatar-2.jpg" alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Suzen</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card-block">
-                    <div class="table-responsive">
-                        <table class="table table-hover  table-borderless">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <div class="chk-option">
-                                            <div class="checkbox-fade fade-in-primary">
-                                                <label class="check-task">
-                                                    <input type="checkbox" value="">
-                                                    <span class="cr">
-                                                        <i class="cr-icon feather icon-check txt-default"></i>
-                                                    </span>
-                                                </label>
+            </div>
+            <!-- Sidebar inner chat start-->
+            <div class="showChat_inner">
+                <div class="media chat-inner-header">
+                    <a class="back_chatBox">
+                        <i class="feather icon-chevron-left"></i> Josephin Doe
+                    </a>
+                </div>
+                <div class="media chat-messages">
+                    <a class="media-left photo-table" href="#!">
+                        <img class="media-object img-radius img-radius m-t-5" src="..\files\assets\images\avatar-3.jpg" alt="Generic placeholder image">
+                    </a>
+                    <div class="media-body chat-menu-content">
+                        <div class="">
+                            <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="media chat-messages">
+                    <div class="media-body chat-menu-reply">
+                        <div class="">
+                            <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                    <div class="media-right photo-table">
+                        <a href="#!">
+                            <img class="media-object img-radius img-radius m-t-5" src="..\files\assets\images\avatar-4.jpg" alt="Generic placeholder image">
+                        </a>
+                    </div>
+                </div>
+                <div class="chat-reply-box p-b-20">
+                    <div class="right-icon-control">
+                        <input type="text" class="form-control search-text" placeholder="Share Your Thoughts">
+                        <div class="form-icon">
+                            <i class="feather icon-navigation"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar inner chat end-->
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <nav class="pcoded-navbar">
+                        <div class="pcoded-inner-navbar main-menu">
+                            @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                            {
+                                <div class="pcoded-navigatio-lavel">Admin</div>
+                                <ul class="pcoded-item pcoded-left-item">
+                                    <li class="pcoded-hasmenu active pcoded-trigger">
+                                        <a href="javascript:void(0)">
+                                            <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                            <span class="pcoded-mtext">Users</span>
+                                        </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="@Url.Action("User","Admin")">
+                                                    <span class="pcoded-mtext">List User</span>
+                                                </a>
+                                            </li>
+                                            <li class="active">
+                                                <a href="@Url.Action("Index","Product")">
+                                                    <span class="pcoded-mtext">Listed Products</span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="dashboard-analytics.htm">
+                                                    <span class="pcoded-mtext">Analytics</span>
+                                                    <span class="pcoded-badge label label-info ">NEW</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+                            <div class="pcoded-navigatio-lavel">Navigation</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Dashboard</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="index-1.htm">
+                                                <span class="pcoded-mtext">Home</span>
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="dashboard-crm.htm">
+                                                <span class="pcoded-mtext">Trade</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="dashboard-analytics.htm">
+                                                <span class="pcoded-mtext">Analytics</span>
+                                                <span class="pcoded-badge label label-info ">NEW</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigatio-lavel">Trading</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Platform</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-mtext">Start Trade</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" ">
+                                                    <a href="@Url.Action("Index","Platform", new { product = "EURUSD" })">
+                                                        <span class="pcoded-mtext">EURUSD</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="@Url.Action("Index","Platform", new { product = "GBPUSD" })">
+                                                        <span class="pcoded-mtext">GBPUSD</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="@Url.Action("Index","Platform", new { product = "EURGBP" })">
+                                                        <span class="pcoded-mtext">EURGBP</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="@Url.Action("Index","Platform", new { product = "USDCAD" })">
+                                                        <span class="pcoded-mtext">USDCAD</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="">
+                                            <a href="@Url.Action("FxWatch","Platform")">
+                                                <span class="pcoded-mtext">FX Watch List</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a id="tradeBlotterLink" data-url="@Url.Action("TradeBlotter","Platform")">
+                                                <span class="pcoded-mtext">TradeBlotter</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigatio-lavel">Tools</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Risk</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="index-1.htm">
+                                                <span class="pcoded-mtext">VAR Computation</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Pricers</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="index-1.htm">
+                                                <span class="pcoded-mtext">Options</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="index-1.htm">
+                                                <span class="pcoded-mtext">Bond</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="index-1.htm">
+                                                <span class="pcoded-mtext">Future / Forward</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+
+
+
+                                <div class="page-body">
+                                    <div class="row row100perc">
+                                        @Html.HiddenFor(m => m.Ticker)
+                                        <!--  sale analytics start -->
+                                        <div class="col-xl-12 chartRow" id="chartPlatform" data-urlHistorical="@Url.Action("GetHistoricalData","Platform")">
+                                            <div class="card">
+                                                <div class="chart-container">
+                                                    <div class="navi" ></div>
+                                                    <div class="button-above">
+                                                        <div>
+                                                            <div class="buy-sell">
+                                                                <div class="sell-wrapper">
+                                                                    <div class="content-left" id="sellButton">
+                                                                        <span class="sell-inside-header">Sell @Model.Asset</span>
+                                                                        <div class="sell-inside-numbers">
+                                                                            <span id="bidInt" class="sell-inside-number-1">123.</span>
+                                                                            <span id="bidFigure" class="sell-inside-number-2">123</span>
+                                                                            <span id="bidPip" class="sell-inside-number-3">7</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comp-triangle-left">
+                                                                        <div class="first-left"></div>
+                                                                        <div class="second-left"></div>
+                                                                        <div class="third-left"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                @*<span class="status-icon-up" id="status-icon-up"></span>*@
+                                                                @*<div class="">
+                                                                        <div class="input-group no-margin">
+                                                                            <span class="input-group-addon border-6">+0.1</span>
+                                                                            <span class="input-group-addon border-6" style="margin-left:26px">+0.01</span>
+                                                                        </div>
+                                                                        <input type="text" class="form-control" placeholder="Multiple addons" value="0.1">
+                                                                        <div class="input-group no-margin">
+                                                                            <span class="input-group-addon border-6">-0.1</span>
+                                                                            <span class="input-group-addon border-6" style="margin-left:34px">-0.01</span>
+                                                                        </div>
+                                                                    </div>*@
+                                                                @*<span class="status-icon-down" id="status-icon-down"></span>*@
+
+                                                                <div class="buy-wrapper">
+                                                                    <div class="content-right" id="buyButton">
+                                                                        <span class="buy-inside-header">Buy @Model.Base</span>
+                                                                        <div class="buy-inside-numbers">
+                                                                            <span id="askInt" class="buy-inside-number-1">123.</span>
+                                                                            <span id="askFigure" class="buy-inside-number-2">123</span>
+                                                                            <span id="askPip" class="buy-inside-number-3">7</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comp-triangle-right">
+                                                                        <div class="first-right"></div>
+                                                                        <div class="second-right"></div>
+                                                                        <div class="third-right"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <input type="text" id="volumeDeal" class="form-control text-above" placeholder="Multiple addons" value="0.1">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        Application
-                                    </th>
-                                    <th>Sales</th>
-                                    <th>Change</th>
-                                    <th>Avg Price</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="chk-option">
-                                            <div class="checkbox-fade fade-in-primary">
-                                                <label class="check-task">
-                                                    <input type="checkbox" value="">
-                                                    <span class="cr">
-                                                        <i class="cr-icon feather icon-check txt-default"></i>
-                                                    </span>
-                                                </label>
+                                        <!--  sale analytics end -->
+
+                                        <div class="col-xl-12 tabSpecRow">
+                                            <div class="card table-card">
+                                                <div class="col-xs-12">
+                                                    <!-- Nav tabs -->
+                                                    <ul class="nav nav-tabs tabSpec  tabs" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" data-toggle="tab" href="#TransacActual" role="tab">Transaction (Actual)</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-toggle="tab" href="#TransacAll" role="tab">Transaction (All)</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-toggle="tab" href="#Exposition" role="tab">Exposition</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-toggle="tab" href="#Log" role="tab">Log</a>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- Tab panes -->
+                                                    <div class="tab-content tabs card-block">
+                                                        <div class="tab-pane active" id="TransacActual" role="tabpanel">
+                                                            <div class="">
+                                                                <table data-closeDeal="@Url.Action("CloseDeal","Platform")" data-openDeal="@Url.Action("OpenDeal","Platform")" data-url="@Url.Action("GetTransactionByTicker","Platform")" id="actualTransactionTable" class="display dt-responsive no-wrap" width="100%">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>@Html.DisplayNameFor(model => model.TransactionModel.Id)</th>
+                                                                            <th>@Html.DisplayNameFor(model => model.TransactionModel.Product.Name)</th>
+                                                                            <th>@Html.DisplayNameFor(model => model.TransactionModel.StartDate)</th>
+                                                                            <th>@Html.DisplayNameFor(model => model.TransactionModel.EndDate)</th>
+                                                                            <th>@Html.DisplayNameFor(model => model.TransactionModel.StartPrice)</th>
+                                                                            <th>@Html.DisplayNameFor(model => model.TransactionModel.EndPrice)</th>
+                                                                            <th>@Html.DisplayNameFor(model => model.TransactionModel.PnL)</th>
+                                                                            <th>@Html.DisplayNameFor(model => model.TransactionModel.Way)</th>
+                                                                            <th>@Html.DisplayNameFor(model => model.TransactionModel.Statuts)</th>
+                                                                            <th>Action</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="TransacAll" role="tabpanel">
+                                                            <p class="m-0">2.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
+                                                        </div>
+                                                        <div class="tab-pane" id="Exposition" role="tabpanel">
+                                                            <p class="m-0">3. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
+                                                        </div>
+                                                        <div class="tab-pane" id="Log" role="tabpanel">
+                                                            <div class="">
+                                                                <table data-mapping="@Url.Action("GetProductMapping","Platform")" id="LogTransactionTable" class="display dt-responsive no-wrap" width="100%">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Hour</th>
+                                                                            <th>Type</th>
+                                                                            <th>Message</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="d-inline-block align-middle">
-                                            <h6>Able Pro</h6>
-                                            <p class="text-muted m-b-0">Powerful Admin Theme</p>
-                                        </div>
-                                    </td>
-                                    <td>16,300</td>
-                                    <td><canvas id="app-sale1" height="50" width="100"></canvas></td>
-                                    <td>$53</td>
-                                    <td class="text-c-blue">$15,652</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="chk-option">
-                                            <div class="checkbox-fade fade-in-primary">
-                                                <label class="check-task">
-                                                    <input type="checkbox" value="">
-                                                    <span class="cr">
-                                                        <i class="cr-icon feather icon-check txt-default"></i>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="d-inline-block align-middle">
-                                            <h6>Photoshop</h6>
-                                            <p class="text-muted m-b-0">Design Software</p>
-                                        </div>
-                                    </td>
-                                    <td>26,421</td>
-                                    <td><canvas id="app-sale2" height="50" width="100"></canvas></td>
-                                    <td>$35</td>
-                                    <td class="text-c-blue">$18,785</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="chk-option">
-                                            <div class="checkbox-fade fade-in-primary">
-                                                <label class="check-task">
-                                                    <input type="checkbox" value="">
-                                                    <span class="cr">
-                                                        <i class="cr-icon feather icon-check txt-default"></i>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="d-inline-block align-middle">
-                                            <h6>Guruable</h6>
-                                            <p class="text-muted m-b-0">Best Admin Template</p>
-                                        </div>
-                                    </td>
-                                    <td>8,265</td>
-                                    <td><canvas id="app-sale3" height="50" width="100"></canvas></td>
-                                    <td>$98</td>
-                                    <td class="text-c-blue">$9,652</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="chk-option">
-                                            <div class="checkbox-fade fade-in-primary">
-                                                <label class="check-task">
-                                                    <input type="checkbox" value="">
-                                                    <span class="cr">
-                                                        <i class="cr-icon feather icon-check txt-default"></i>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="d-inline-block align-middle">
-                                            <h6>Flatable</h6>
-                                            <p class="text-muted m-b-0">Admin App</p>
-                                        </div>
-                                    </td>
-                                    <td>10,652</td>
-                                    <td><canvas id="app-sale4" height="50" width="100"></canvas></td>
-                                    <td>$20</td>
-                                    <td class="text-c-blue">$7,856</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="text-center">
-                            <a href="#!" class=" b-b-primary text-primary">View all Projects</a>
+                                    </div>
+                                </div>
+                                <div id="styleSelector">
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-@section scripts {
+    <!-- Required Jquery -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    @Scripts.Render("~/bundles/components")
+    @Scripts.Render("~/bundles/realtime")
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-2.0.0/sl-1.3.0/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.0.0/pnotify.min.js"></script>
+    @*<script src="https://www.amcharts.com/lib/4/core.js"></script>
+        <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+        <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>*@
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
     <script src="~/Scripts/Platform/Trading.js"></script>
-}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');</script>
+
+</body>
+</html>
+
+

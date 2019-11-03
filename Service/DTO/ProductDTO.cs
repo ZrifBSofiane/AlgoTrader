@@ -14,5 +14,7 @@ namespace Service.DTO
         public String Type { get; set; }
 
         public ForexDTO Forex { get; set; }
+
+      
     }
 }

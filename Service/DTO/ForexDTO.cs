@@ -13,5 +13,10 @@ namespace Service.DTO
         public String Base { get; set; }
         public decimal Pip { get; set; }
         public decimal MarginPercentage { get; set; }
+
+        public string GetDescription()
+        {
+            return $"Factor Pip x{Pip}, Margin risk {MarginPercentage}%";
+        }
     }
 }

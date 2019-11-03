@@ -9,19 +9,21 @@ namespace Service.Interfaces
 {
     public interface IAccountService
     {
-         List<AccountDTO> Get();
-         AccountDTO Get(Guid id);
-         AccountDTO Get(string email);
-         bool UpdateAmount(decimal amount, UserDto User);
-         bool UpdateAmount(decimal amount, Guid id);
-         bool UpdateAmount(decimal amount, string email);
+        bool CreateAccount(string idUser);
+        List<AccountDTO> Get();
+        AccountDTO Get(Guid id);
+        AccountDTO Get(string email);
+        bool UpdateAmount(decimal amount, UserDto User);
+        bool UpdateAmount(decimal amount, Guid id);
+        bool UpdateAmount(decimal amount, string email);
         bool UpdateSignalRId(Guid idUser, string idSignalR);
         bool UpdateSignalRId(string idUuserName, string idSignalR);
         bool BlockOrUnBlockAccount(Guid idUser);
-         string GetSignalRIdByUser(Guid idUser);
-         string GetSignalRIdByUser(string username);
-         List<string> GetSignalRIdByUser(List<Guid> idUser);
-         List<string> GetSignalRIdByUser(List<string> username);
+        string GetSignalRIdByUser(Guid idUser);
+        string GetSignalRIdByUser(string username);
+        List<string> GetSignalRIdByUser(List<Guid> idUser);
+        List<string> GetSignalRIdByUser(List<string> username);
+        bool AddPnl(string idUser, double pnl);
 
 
 

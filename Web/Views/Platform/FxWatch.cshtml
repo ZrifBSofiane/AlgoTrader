@@ -1,0 +1,60 @@
+﻿@model Web.ViewModel.LayoutViewModel
+
+@{
+    ViewBag.Title = "FxWatch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-body" data-openDeal="@Url.Action("OpenDeal","Platform")">
+    <div class="row">
+
+        @foreach (var product in ViewBag.Products)
+        {
+            <div class="button-above-watchlist @product.Name" data-id="@product.Id" data-name="@product.Name">
+                <div>
+                    <div class="buy-sell">
+                        <div class="sell-wrapper">
+                            <div class="content-left sellButton" data-id="@product.Name">
+                                <span class="sell-inside-header">Sell @product.Forex.Asset</span>
+                                <div class="sell-inside-numbers">
+                                    <span id="bidInt" class="sell-inside-number-1">123.</span>
+                                    <span id="bidFigure" class="sell-inside-number-2">123</span>
+                                    <span id="bidPip" class="sell-inside-number-3">7</span>
+                                </div>
+                            </div>
+                            <div class="comp-triangle-left">
+                                <div class="first-left"></div>
+                                <div class="second-left"></div>
+                                <div class="third-left"></div>
+                            </div>
+                        </div>
+
+                        <div class="buy-wrapper">
+                            <div class="content-right buyButton" data-id="@product.Name">
+                                <span class="buy-inside-header">Buy @product.Forex.Base</span>
+                                <div class="buy-inside-numbers">
+                                    <span id="askInt" class="buy-inside-number-1">123.</span>
+                                    <span id="askFigure" class="buy-inside-number-2">123</span>
+                                    <span id="askPip" class="buy-inside-number-3">7</span>
+                                </div>
+                            </div>
+                            <div class="comp-triangle-right">
+                                <div class="first-right"></div>
+                                <div class="second-right"></div>
+                                <div class="third-right"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <input type="text" id="volumeDeal" class="form-control text-above" placeholder="Multiple addons" value="0.1">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script src="~/Scripts/Platform/FxWatchList.js"></script>
+}

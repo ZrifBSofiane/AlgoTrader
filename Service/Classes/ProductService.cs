@@ -25,5 +25,21 @@ namespace Service.Classes
             var result = _reposiroty.Get();
             return result.Select(p => _factory.Create(p)).ToList();
         }
+
+        public ProductDTO Get(string productName)
+        {
+            return _factory.Create(_reposiroty.Get(productName));
+        }
+
+        public List<ProductDTO> GetFx()
+        {
+            var result = _reposiroty.GetFx();
+            return result.Select(p => _factory.Create(p)).ToList();
+        }
+
+        public int GetIdProduct(string name)
+        {
+            return _reposiroty.GetIdProduct(name);
+        }
     }
 }

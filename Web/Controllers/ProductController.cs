@@ -11,6 +11,7 @@ using Web.ViewModel.ProductController;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
 
@@ -25,8 +26,14 @@ namespace Web.Controllers
         // GET: Product
         public ActionResult Index()
         {
+            
+            return View();
+        }
+
+        public ActionResult PartialProduct()
+        {
             var products = _productService.Get();
-            return View(products);
+            return PartialView("_ProductIndex", products);
         }
 
 

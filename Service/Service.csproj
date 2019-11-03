@@ -40,6 +40,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="IronPdf, Version=2019.7.0.21100, Culture=neutral, PublicKeyToken=94e1c31412563c75, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPdf.2019.7.0\lib\net40\IronPdf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -49,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,7 +65,11 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Classes\AccountService.cs" />
     <Compile Include="Classes\ForexService.cs" />
+    <Compile Include="Classes\HistoricalDataService.cs" />
+    <Compile Include="Classes\TradingPdfService.cs" />
+    <Compile Include="DTO\HistoricalDataDTO.cs" />
     <Compile Include="Classes\ProductService.cs" />
+    <Compile Include="Classes\TransactionService.cs" />
     <Compile Include="Classes\UserService.cs" />
     <Compile Include="DTO\AccountDTO.cs" />
     <Compile Include="DTO\ForexDTO.cs" />
@@ -70,16 +79,25 @@
     <Compile Include="DTO\UserDto.cs" />
     <Compile Include="Factory\IForexFactory.cs" />
     <Compile Include="Factory\IAccountFactory.cs" />
+    <Compile Include="Factory\IHistoricalDataFactory.cs" />
     <Compile Include="Factory\IObjectFactory.cs" />
     <Compile Include="Factory\IProductFactory.cs" />
+    <Compile Include="Factory\ITransactionFactory.cs" />
     <Compile Include="Factory\IUserFactory.cs" />
+    <Compile Include="Helper\ProductHelper.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
     <Compile Include="Interfaces\IForexService.cs" />
+    <Compile Include="Interfaces\IHistoricalDataService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
+    <Compile Include="Interfaces\ITransactionService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataHistoricalRepository\DataHistoricalRepository.csproj">
+      <Project>{F8F632D9-21AD-47C4-9C95-85C337BD6C01}</Project>
+      <Name>DataHistoricalRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Reposiroty\Reposiroty.csproj">
       <Project>{EFC0B259-2856-4345-BC2E-A251482F330D}</Project>
       <Name>Reposiroty</Name>

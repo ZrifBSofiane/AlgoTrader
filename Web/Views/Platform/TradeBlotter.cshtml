@@ -1,0 +1,97 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TradeBlotter</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="#">
+    <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="#">
+    <!-- Favicon icon -->
+    <link rel="icon" href="..\files\assets\images\favicon.ico" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-2.0.0/sl-1.3.0/datatables.min.css" />
+</head>
+<body>
+    <div class="col-xl-12 tabSpecRow">
+        <div class="card table-card">
+            <div class="col-xs-12">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabSpec  tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#TransacActual" role="tab">Transaction (Actual)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#TransacAll" role="tab">Transaction (All)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#Exposition" role="tab">Exposition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#Log" role="tab">Log</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content tabs card-block">
+                    <div class="tab-pane active" id="TransacActual" role="tabpanel">
+                        <div class="">
+                            <table data-closeDeal="@Url.Action("CloseDeal","Platform")" data-openDeal="@Url.Action("OpenDeal","Platform")" data-url="@Url.Action("GetTransactionByTicker","Platform")" id="actualTransactionTable" class="display dt-responsive no-wrap" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Start Price</th>
+                                        <th>End Price</th>
+                                        <th>PnL</th>
+                                        <th>Way</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="TransacAll" role="tabpanel">
+                        <p class="m-0">2.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
+                    </div>
+                    <div class="tab-pane" id="Exposition" role="tabpanel">
+                        <p class="m-0">3. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
+                    </div>
+                    <div class="tab-pane" id="Log" role="tabpanel">
+                        <div class="">
+                            <table data-mapping="@Url.Action("GetProductMapping","Platform")" id="LogTransactionTable" class="display dt-responsive no-wrap" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Hour</th>
+                                        <th>Type</th>
+                                        <th>Message</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/components")
+    @Scripts.Render("~/bundles/realtime")
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-2.0.0/sl-1.3.0/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/Platform/TradeBlotter.js"></script>
+</body>
+</html>

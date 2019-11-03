@@ -1,4 +1,4 @@
-﻿
+﻿@model Web.ViewModel.LayoutViewModel
 <html lang="en">
 
 <head>
@@ -110,6 +110,7 @@
                                 </a>
                             </li>
                         </ul>
+                        
                         <ul class="nav-right">
                             <li class="header-notification">
                                 <div class="dropdown-primary dropdown">
@@ -192,7 +193,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="auth-normal-sign-in.htm">
+                                            <a href="@Url.Action("Logout","Authentication")">
                                                 <i class="feather icon-log-out"></i> Logout
                                             </a>
                                         </li>
@@ -327,7 +328,7 @@
                                         </a>
                                         <ul class="pcoded-submenu">
                                             <li class="">
-                                                <a href="@Url.Action("User","Admin")">
+                                                <a href="@Url.Action("Index","Admin")">
                                                     <span class="pcoded-mtext">List User</span>
                                                 </a>
                                             </li>
@@ -355,7 +356,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class="">
-                                            <a href="index-1.htm">
+                                            <a href="@Url.Action("Index","Portal")">
                                                 <span class="pcoded-mtext">Home</span>
                                             </a>
                                         </li>
@@ -381,9 +382,41 @@
                                         <span class="pcoded-mtext">Platform</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class="">
-                                            <a href="@Url.Action("Index","Platform")">
+                                        <li class=" pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
                                                 <span class="pcoded-mtext">Start Trade</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" ">
+                                                    <a href="@Url.Action("Index","Platform", new { product = "EURUSD" })">
+                                                        <span class="pcoded-mtext">EURUSD</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="@Url.Action("Index","Platform", new { product = "GBPUSD" })">
+                                                        <span class="pcoded-mtext">GBPUSD</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="@Url.Action("Index","Platform", new { product = "EURGBP" })">
+                                                        <span class="pcoded-mtext">EURGBP</span>
+                                                    </a>
+                                                </li>
+                                                <li class=" ">
+                                                    <a href="@Url.Action("Index","Platform", new { product = "USDCAD" })">
+                                                        <span class="pcoded-mtext">USDCAD</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="">
+                                            <a href="@Url.Action("FxWatch","Platform")">
+                                                <span class="pcoded-mtext">FX Watch List</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a id="tradeBlotterLink" data-url="@Url.Action("TradeBlotter","Platform")">
+                                                <span class="pcoded-mtext">TradeBlotter</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -466,15 +499,7 @@
     <script src="https://www.amcharts.com/lib/4/charts.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
     @RenderSection("scripts", required: false)
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-23581568-13');</script>
-
+   
 </body>
 </html>
 

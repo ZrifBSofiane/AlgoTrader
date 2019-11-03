@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Service.DTO.UserDto>
+
+@{
+    ViewBag.Title = "User";
+}
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Autofill table start -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Auto Fill</h5>
+                    <span>AutoFill gives an Excel like option to a DataTable to click and drag over multiple cells, filling in information over the selected cells and incrementing numbers as needed.</span>
+                    <div class="card-header-right">
+                        <ul class="list-unstyled card-option">
+                            <li><i class="feather icon-maximize full-card"></i></li>
+                            <li><i class="feather icon-minus minimize-card"></i></li>
+                            <li><i class="feather icon-trash-2 close-card"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="dt-responsive table-responsive">
+                        <table id="autofill" class="table table-striped table-bordered nowrap">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Surname)</th>
+                                    <th>@Html.DisplayNameFor(model => model.DateBirth)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Pseudo)</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Surname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateBirth)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Pseudo)
+                                        </td>
+                                        <td>
+                                            <button type="button" class="viewUser btn btn-primary btn-icon wave-effect md-trigger" data-url="@Url.Action("GetDetailUser","Admin", new {idUser = item.Id })" data-id="@item.Id" data-modal="modal-9">
+                                                <i class="icofont icofont-user-alt-3"></i>
+                                            </button>
+                                            <button class="btn btn-inverse btn-icon" data-id="@item.Id">
+                                                <i class="icofont icofont-exchange"></i>
+                                            </button>
+                                            <button type="button" class="block btn btn-inverse btn-icon" data-url="@Url.Action("BlockOrUnBlockUser","Admin", new {idUser = item.Id })">
+                                                <i class="icofont icofont-close"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal*@
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

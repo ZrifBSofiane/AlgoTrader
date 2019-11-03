@@ -11,5 +11,8 @@ namespace Service.Interfaces
     {
         List<ProductDTO> Get();
         bool AddForex(string baseCurr, string assetCurr, string market, string name, decimal pip, decimal margin);
+        int GetIdProduct(string name);
+        ProductDTO Get(string productName);
+        List<ProductDTO> GetFx();
     }
 }

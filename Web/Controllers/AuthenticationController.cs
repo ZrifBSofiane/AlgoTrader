@@ -9,6 +9,7 @@ using Reposiroty.Models;
 using System;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Linq;
+using Service.Interfaces;
 
 namespace Web.Controllers
 {
@@ -16,6 +17,13 @@ namespace Web.Controllers
     [AllowAnonymous]
     public class AuthenticationController : Controller
     {
+        private readonly IAccountService _accountService;
+
+        public AuthenticationController(IAccountService account)
+        {
+            _accountService = account;
+        }
+
 
 
         private ApplicationSignInManager _signInManager;
@@ -69,7 +77,7 @@ namespace Web.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("ConfirmEmail");
+                        return RedirectToAction("GetConfirmEmail", new {userId = _user.Id});
                     }
                 }
                 else
@@ -88,7 +96,8 @@ namespace Web.Controllers
 
         public ActionResult Logout()
         {
-            return View();
+            HttpContext.GetOwinContext().Authentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -119,27 +128,21 @@ namespace Web.Controllers
             var result = await UserManager.CreateAsync(newUser, newUser.Password);
             if (result.Succeeded)
             {
-
+                var accountCreation = _accountService.CreateAccount(newUser.Id);
                 var resultRole = await UserManager.AddToRoleAsync(newUser.Id, newUser.Role.ToString());
                 if(resultRole.Succeeded)
                 {
-                    goto SaveRole;
+                    return RedirectToAction("GetConfirmEmail", new { userId = newUser.Id });
                 }
                 else
                 {
                     var resultCreation = UserManager.IdentityManager.CreateRole(newUser.Role.ToString());
                     if(resultCreation)
                     {
-                        goto SaveRole;
+                        await UserManager.AddToRoleAsync(newUser.Id, newUser.Role.ToString());
+                        return RedirectToAction("GetConfirmEmail", new { userId = newUser.Id });
                     }
                 }
-                SaveRole:
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(newUser.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Authentication", new { userId = newUser.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(newUser.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\""
-                    + callbackUrl + "\">link</a>");
-                    return RedirectToAction("ConfirmEmail");
-
             }
             else
             {
@@ -151,7 +154,20 @@ namespace Web.Controllers
             return View();
         }
 
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        public async Task<ActionResult> GetConfirmEmail(string userId)
+        {
+            ViewBag.IsRedirected = false;
+            var code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+            var callbackUrl = Url.Action("PostConfirmEmail", "Authentication", new { userId = userId, code = code }, protocol: Request.Url.Scheme);
+            await UserManager.SendEmailAsync(userId, "Confirm your account", "Please confirm your account by clicking this link: <a href=\""
+            + callbackUrl + "\">link</a>");
+            ViewBag.Email = UserManager.GetEmail(userId);
+            return View();
+        }
+
+
+        
+        public async Task<ActionResult> PostConfirmEmail(string userId, string code)
         {
             ViewBag.IsRedirected = false;
             if (string.IsNullOrWhiteSpace(userId))
@@ -160,7 +176,7 @@ namespace Web.Controllers
             {
                 await UserManager.ConfirmEmailAsync(userId, code);
             }
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
 

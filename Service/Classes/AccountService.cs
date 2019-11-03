@@ -18,6 +18,14 @@ namespace Service.Classes
         private readonly IObjectFactory<ApplicationUser, UserDto> _factoryUser = new ObjectFactory<ApplicationUser, UserDto>();
         private readonly AccountRepository _repository = new AccountRepository();
 
+
+
+        public bool CreateAccount(string idUser)
+        {
+            return _repository.CreateAccount(idUser);
+        }
+
+
         public bool BlockOrUnBlockAccount(Guid idUser)
         {
             return _repository.BlockOrUnBlockAccount(idUser);
@@ -82,6 +90,11 @@ namespace Service.Classes
         public bool UpdateSignalRId(string idUuserName, string idSignalR)
         {
             return _repository.UpdateSignalRId(idUuserName, idSignalR);
+        }
+
+        public bool AddPnl(string idUser, double pnl)
+        {
+            return _repository.AddPnL(idUser, pnl);
         }
     }
 }

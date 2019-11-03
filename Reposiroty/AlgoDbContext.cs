@@ -12,7 +12,7 @@ namespace Reposiroty
 {
     public class AlgoDbContext : IdentityDbContext<ApplicationUser>
     {
-        public AlgoDbContext() : base("AlgoEntity", false)
+        public AlgoDbContext() : base("AlgoEntityProd", false)
         {
 
         }
@@ -31,6 +31,9 @@ namespace Reposiroty
             base.OnModelCreating(modelBuilder);
             // Add here specifications like Precision of double or NULL / Default value
             modelBuilder.Entity<Forex>().Property(f => f.Pip).HasPrecision(18, 7);
+            modelBuilder.Entity<Transaction>().Property(f => f.StartPrice).HasPrecision(18, 7);
+            modelBuilder.Entity<Transaction>().Property(f => f.EndPrice).HasPrecision(18, 7);
+            modelBuilder.Entity<Transaction>().Property(f => f.PnL).HasPrecision(18, 7);
         }
 
         public static AlgoDbContext Create()
@@ -143,22 +146,22 @@ namespace Reposiroty
         public Task SendAsync(IdentityMessage message)
         {
             // Credentials:
-            var credentialUserName = "sofiane.zrif@gmail.com";
-            var sentFrom = "sofiane.zrif@gmail.com";
-            var pwd = ""; //TODO : change credentials
+            var credentialUserName = "contact@trader-algo.com";
+            var sentFrom = "contact@trader-algo.com";
+            var pwd = "Elkhademzrif93"; //TODO : change credentials
 
             // Configure the client:
-            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com"); // TODO : Change Server
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("plesk2900.is.cc"); // TODO : Change Server
 
-            client.Port = 465;
-            client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            client.Port = 25;
             client.UseDefaultCredentials = false;
 
             // Create the credentials:
             System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(credentialUserName, pwd);
-
+      
             client.EnableSsl = true;
             client.Credentials = credentials;
+            
 
             // Create the message:
             var mail = new System.Net.Mail.MailMessage(sentFrom, message.Destination);

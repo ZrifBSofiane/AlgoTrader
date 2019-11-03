@@ -44,7 +44,6 @@ namespace Web
                        "~/Content/files/assets/js/toastr.min.js"));
 
 
-
             // Utilisez la version de déassets\pages\widget\amchart\pie.js"></veloppement de Modernizr pour le développement et l'apprentissage. Puis, une fois
             // prêt pour la production, assets\pages\widget\amchart\light.js">utilisez l'outil de génération à l'adresse https://modernizr.com pour sélectionner uniquement les tests dont vous avez besoin.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -63,7 +62,8 @@ namespace Web
                       "~/Content/files/assets/icon/themify-icons/themify-icons.css",
                       "~/Content/files/assets/icon/feather/css/feather.css",
                       "~/Content/files/assets/icon/icofont/css/icofont.css",
-                       "~/Content/files/assets/css/toastr.min.css"));
+                       "~/Content/files/assets/css/toastr.min.css",
+                       "~/Content/files/assets/images/flavicon.ico"));
         }
     }
 }

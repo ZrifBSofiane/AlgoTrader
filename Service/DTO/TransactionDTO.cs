@@ -17,5 +17,7 @@ namespace Service.DTO
         public decimal EndPrice { get; set; }
         public UserDto User { get; set; }
         public ProductDTO Product { get; set; }
+        public decimal PnL { get; set; }
+        public decimal Quantity { get; set; }
     }
 }

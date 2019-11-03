@@ -2,8 +2,10 @@
 using Reposiroty.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +20,9 @@ namespace Reposiroty.DataAccess
             {
                 using (var context = new AlgoDbContext())
                 {
-                    return context.Account.ToList();
+                    return context.Account
+                        .Include(t => t.User)
+                        .ToList();
                 }
             }
             catch (DbEntityValidationException e)
@@ -58,7 +62,9 @@ namespace Reposiroty.DataAccess
             {
                 using (var context = new AlgoDbContext())
                 {
-                    return context.Account.Where(r => r.User.Email == email).FirstOrDefault();
+                    return context.Account.Where(r => r.User.Email == email)
+                        .Include(t => t.User)
+                        .FirstOrDefault();
                 }
             }
             catch (DbEntityValidationException e)
@@ -301,5 +307,80 @@ namespace Reposiroty.DataAccess
             }
             return null;
         }
+
+        public bool CreateAccount(string idUser)
+        {
+            try
+            {
+                using (var context = new AlgoDbContext())
+                {
+                    var startAmount = context.Parameters.FirstOrDefault(p => p.Key == "StartAmount");
+                    if (startAmount == null)
+                        return false;
+                    var user = context.Users.FirstOrDefault(d => d.Id == idUser);
+                    if (user == null)
+                        return false;
+                    var newAccount = new Account()
+                    {
+                        Amount = Convert.ToInt32(startAmount.Value),
+                        User = user,
+                    };
+                    context.Account.Add(newAccount);
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return false;
+        }
+
+        public bool AddPnL(string userId, double pnl)
+        {
+            //Update Transactions Set Statuts = 'Closed', EndDate = GETDATE(), EndPrice = 32.98 Where Id = 33
+            try
+            {
+                using (var context = new AlgoDbContext())
+                {
+
+                    var parameter = new List<SqlParameter>()
+                    {
+                        new SqlParameter("@idUser", userId),
+                        new SqlParameter("@pnl", pnl)
+                    };
+                    var curr = context.Database.ExecuteSqlCommand("Update Accounts set Amount = Amount + @pnl Where User_Id = @idUser", parameter.ToArray());
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                Debug.WriteLine(e.Message);
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return false;
+        }
+
+
+
     }
 }

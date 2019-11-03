@@ -11,8 +11,7 @@ namespace Reposiroty.Models
     {
         [Key]
         public int Id { get; set; }
-        public bool IsMarketOpened { get; set; }
-        public decimal RequiredMargin { get; set; }
-        public decimal StartAmount { get; set; }
+        public string Key { get; set; }
+        public string Value { get; set; }
     }
 }

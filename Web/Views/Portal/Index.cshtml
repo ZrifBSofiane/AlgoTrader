@@ -1,0 +1,23 @@
+﻿@model Web.ViewModel.PortalController.PortalViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="page-body">
+
+
+        @{Html.RenderAction("ListTrade");}
+
+
+        <a href="@Url.Action("GenerateAndDownloadStatement","Portal")" target="_blank" class="btn btn-info" role="button">Download Statement</a>
+        
+
+
+
+    </div>
+
+@section scripts {
+
+    <script src="~/Scripts/Portal/Portal.js"></script>
+}

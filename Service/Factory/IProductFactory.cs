@@ -40,7 +40,16 @@ namespace Service.Factory
 
         public ProductDTO Create(Product acc)
         {
-            return _mapper.Map<Product, ProductDTO>(acc);
+            try
+            {
+                return _mapper.Map<Product, ProductDTO>(acc);
+            }
+            catch(Exception e)
+            {
+                var d = 0;
+                return null;
+            }
+            
         }
 
         public Product CreateDb(ProductDTO acc)

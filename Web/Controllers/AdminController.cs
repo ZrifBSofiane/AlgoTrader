@@ -1,4 +1,5 @@
-﻿using Service.Interfaces;
+﻿using BusMapping;
+using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,16 @@ namespace Web.Controllers
 
         private readonly IUserService _userService;
         private readonly IAccountService _accountService;
+        private readonly IProductService _productService;
+        private readonly static ProductMapping<string> _productMapping = new ProductMapping<string>();
 
-        public AdminController(IUserService userService, IAccountService accountService)
+        public AdminController(IProductService productService, IUserService userService, IAccountService accountService)
         {
             _userService = userService;
             _accountService = accountService;
+            _productService = productService;
+
+            SetOrUpdateProductMapping();
         }
 
         // GET: Admin
@@ -26,10 +32,10 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult User()
+        public ActionResult PartialUser()
         {
             var users = _userService.Get();
-            return View(users);
+            return PartialView("_UserIndex", users);
         }
 
         [HttpGet]
@@ -49,5 +55,34 @@ namespace Web.Controllers
                 message = result ? "Account updated" : "An error happened",
             });
         }
+        /// <summary>
+        /// Set product mapping, in order to compute accurate pnl, and be able to know if connected
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult SetOrUpdateProductMapping()
+        {
+            var isOk = true;
+            var message = string.Empty;
+            var products = _productService.Get();
+            if(products.Count == 0)
+            {
+                isOk = false;
+                message = "Products lists is empty. Must add products before";
+            }
+            foreach(var p in products)
+            {
+                _productMapping.Add(p.Name, p);
+            }
+            return Json(new
+            {
+                isOk = isOk,
+                message = isOk ? "Product mapping updated" : message,
+            });
+        }
+
+
+
     }
 }

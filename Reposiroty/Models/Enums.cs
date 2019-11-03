@@ -24,5 +24,18 @@ namespace Reposiroty.Models
             BOND,
             EQUITY
         }
+
+        public enum StatusDeal
+        {
+            Cancelled,
+            Opened,
+            Closed
+        }
+
+        public enum Way
+        {
+            BUY,
+            SELL
+        }
     }
 }

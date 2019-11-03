@@ -19,6 +19,7 @@ namespace Reposiroty.Models
         public String Statuts { get; set; }
         public decimal StartPrice { get; set; }
         public decimal EndPrice { get; set; }
+        public decimal PnL { get; set; }
 
         //Foreign Key
         public ApplicationUser User { get; set; }

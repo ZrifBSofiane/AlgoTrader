@@ -24,7 +24,8 @@ namespace Web
             container.Register<IAccountService, AccountService>();
             container.Register<IForexService, ForexService>();
             container.Register<IProductService, ProductService>();
-
+            container.Register<ITransactionService, TransactionService>();
+            container.Register<IHistoricalDataService, HistoricalDataService>();
 
             // This two extension method from integration package
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());

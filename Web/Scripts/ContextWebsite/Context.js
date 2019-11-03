@@ -3,7 +3,16 @@
     var Context = function () {
 
         this.initClass = function () {
-            initContextHub();
+           // initContextHub();
+            initEvent();
+        };
+
+        var initEvent = function () {
+            $("a#tradeBlotterLink").on("click", function () {
+                var winFeature = 'location=no,toolbar=no,menubar=no,scrollbars=yes,resizable=yes';
+                window.open($("a#tradeBlotterLink").attr("data-url"), 'null', winFeature);  
+            });
+            
         };
 
         var initContextHub = function () {
